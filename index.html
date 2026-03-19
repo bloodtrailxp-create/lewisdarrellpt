@@ -4,19 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boxing Training Programs | Lewis Darrell PT</title>
+<meta name="description" content="Professional boxing training plans by Lewis Darrell PT. Downloadable PDF programs for beginners, kids & teens, and advanced fighters. Plus 1-to-1 and online PT sessions.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap">
 <style>
   :root {
-    --black: #0a0a0a;
-    --off-black: #141414;
-    --dark-gray: #1e1e1e;
-    --mid-gray: #2a2a2a;
-    --text: #e8e4df;
-    --text-muted: #8a8580;
-    --accent: #e63b2e;
-    --accent-glow: #ff4d3a;
-    --gold: #d4a853;
-    --gold-dim: #b8923f;
+    --black: #080e0a;
+    --off-black: #0e1710;
+    --dark-gray: #152018;
+    --mid-gray: #1e2e22;
+    --text: #e2ece5;
+    --text-muted: #7a9982;
+    --accent: #1db85a;
+    --accent-glow: #25d96a;
+    --gold: #2ecc71;
+    --gold-dim: #1aad5a;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,6 +31,61 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
+
+  /* ---- HAMBURGER ---- */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ---- MOBILE DRAWER ---- */
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,10,0.97);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2rem;
+  }
+  .mobile-drawer.open { display: flex; }
+  .mobile-drawer a {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .mobile-drawer a:hover { color: var(--accent); }
+  .mobile-drawer .drawer-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.9rem 2.5rem;
+    border-radius: 4px;
+    font-size: 1.8rem;
+  }
+  .mobile-drawer .drawer-cta:hover { background: var(--accent-glow); }
 
   /* ---- NOISE TEXTURE ---- */
   body::before {
@@ -98,7 +154,7 @@
     position: absolute;
     top: -50%; left: -50%;
     width: 200%; height: 200%;
-    background: radial-gradient(ellipse at 50% 30%, rgba(230,59,46,0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 30%, rgba(29,184,90,0.1) 0%, transparent 60%);
     animation: pulse 8s ease-in-out infinite alternate;
   }
   @keyframes pulse {
@@ -157,7 +213,7 @@
   .hero-cta:hover {
     background: var(--accent-glow);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(230,59,46,0.3);
+    box-shadow: 0 8px 30px rgba(29,184,90,0.35);
   }
   .hero-cta svg { width: 18px; height: 18px; }
 
@@ -214,7 +270,7 @@
   }
   .program-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(230,59,46,0.3);
+    border-color: rgba(29,184,90,0.35);
   }
   .program-card::after {
     content: '';
@@ -228,7 +284,7 @@
   .program-card:hover::after { opacity: 1; }
   .program-icon {
     width: 48px; height: 48px;
-    background: rgba(230,59,46,0.1);
+    background: rgba(29,184,90,0.1);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -308,7 +364,7 @@
   .buy-btn:hover {
     background: var(--accent-glow);
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(230,59,46,0.3);
+    box-shadow: 0 6px 24px rgba(29,184,90,0.35);
   }
   .buy-btn svg {
     width: 16px;
@@ -329,7 +385,7 @@
   .feature-number {
     font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
     font-size: 3rem;
-    color: rgba(230,59,46,0.2);
+    color: rgba(29,184,90,0.2);
     line-height: 1;
     margin-bottom: 0.75rem;
   }
@@ -436,7 +492,7 @@
     position: absolute;
     top: 0; left: 50%; transform: translateX(-50%);
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(230,59,46,0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(29,184,90,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
   .cta-section h2 {
@@ -470,7 +526,7 @@
   .cta-btn:hover {
     background: var(--accent-glow);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(230,59,46,0.3);
+    box-shadow: 0 8px 30px rgba(29,184,90,0.35);
   }
 
   /* ---- FAQ ---- */
@@ -502,7 +558,7 @@
     line-height: 1.7;
   }
   .faq-item.open .faq-answer {
-    max-height: 200px;
+    max-height: 400px;
     padding-top: 1rem;
   }
 
@@ -524,11 +580,11 @@
   }
   .session-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(230,59,46,0.3);
+    border-color: rgba(29,184,90,0.35);
   }
   .session-icon {
     width: 52px; height: 52px;
-    background: rgba(230,59,46,0.1);
+    background: rgba(29,184,90,0.1);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -559,8 +615,8 @@
     font-weight: 400;
   }
   .bundle-card {
-    background: linear-gradient(135deg, var(--dark-gray), rgba(230,59,46,0.08));
-    border: 1px solid rgba(230,59,46,0.25);
+    background: linear-gradient(135deg, var(--dark-gray), rgba(29,184,90,0.08));
+    border: 1px solid rgba(29,184,90,0.25);
     border-radius: 10px;
     padding: 2.5rem 2rem;
     text-align: center;
@@ -717,7 +773,7 @@
   .submit-btn:hover {
     background: var(--accent-glow);
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(230,59,46,0.3);
+    box-shadow: 0 6px 24px rgba(29,184,90,0.35);
   }
   .form-success {
     display: none;
@@ -826,7 +882,7 @@
   }
   .cal-day:hover:not(.cal-disabled):not(.cal-empty) {
     border-color: var(--accent);
-    background: rgba(230,59,46,0.1);
+    background: rgba(29,184,90,0.1);
   }
   .cal-day.cal-selected {
     background: var(--accent) !important;
@@ -847,8 +903,8 @@
   .cal-selected-display {
     margin-top: 0.75rem;
     padding: 0.6rem 0.8rem;
-    background: rgba(230,59,46,0.1);
-    border: 1px solid rgba(230,59,46,0.2);
+    background: rgba(29,184,90,0.1);
+    border: 1px solid rgba(29,184,90,0.2);
     border-radius: 6px;
     font-size: 0.85rem;
     color: var(--accent);
@@ -859,7 +915,8 @@
 
   /* ---- RESPONSIVE ---- */
   @media (max-width: 768px) {
-    .nav-links a:not(.nav-cta) { display: none; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .about-image { min-height: 250px; }
     .about-image img { max-height: 300px; }
@@ -872,7 +929,6 @@
     .programs-grid { grid-template-columns: 1fr; }
     .booking-grid { grid-template-columns: 1fr; }
     .testimonials-grid { grid-template-columns: 1fr; }
-    .pub-stats { grid-template-columns: repeat(2, 1fr); }
     .section-title { font-size: 2rem; }
     .bundle-card { padding: 1.5rem; }
     .bundle-pricing .new-price { font-size: 2rem; }
@@ -899,7 +955,19 @@
     <a href="#faq">FAQ</a>
     <a href="#programs" class="nav-cta">Get Started</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="#programs" class="drawer-link">Programs</a>
+  <a href="#booking" class="drawer-link">Book a Session</a>
+  <a href="#about" class="drawer-link">About</a>
+  <a href="#faq" class="drawer-link">FAQ</a>
+  <a href="#programs" class="drawer-cta drawer-link">Get Started</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1171,10 +1239,14 @@
         <label>Preferred Time</label>
         <select id="preferredTime">
           <option value="">Choose a time...</option>
-          <optgroup label="Weekday Evenings (Mon-Fri)">
+          <optgroup label="Weekday Evenings (Mon, Tue, Thu, Fri)">
             <option value="6:00pm - 7:00pm">6:00pm - 7:00pm</option>
             <option value="7:00pm - 8:00pm">7:00pm - 8:00pm</option>
             <option value="8:00pm - 9:00pm">8:00pm - 9:00pm</option>
+          </optgroup>
+          <optgroup label="Wednesday Only">
+            <option value="5:00pm - 6:00pm">5:00pm - 6:00pm</option>
+            <option value="6:00pm - 7:00pm">6:00pm - 7:00pm</option>
           </optgroup>
           <optgroup label="Weekends (Sat-Sun)">
             <option value="10:30am - 11:30am">10:30am - 11:30am</option>
@@ -1334,8 +1406,7 @@
     // Update time options based on selected day
     if (calSelected) {
       const dayOfWeek = calSelected.getDay();
-      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-      updateTimeOptions(isWeekend);
+      updateTimeOptions(dayOfWeek);
     }
   }
 
@@ -1359,15 +1430,26 @@
     renderCalendar();
   }
 
-  function updateTimeOptions(isWeekend) {
+  function updateTimeOptions(dayOfWeek) {
     const sel = document.getElementById('preferredTime');
-    const currentVal = sel.value;
     sel.innerHTML = '<option value="">Choose a time...</option>';
+
+    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+    const isWednesday = dayOfWeek === 3;
 
     if (isWeekend) {
       const grp = document.createElement('optgroup');
       grp.label = 'Weekend Times';
       ['10:30am - 11:30am','11:30am - 12:30pm','12:30pm - 1:30pm','1:30pm - 2:30pm','2:30pm - 3:30pm'].forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t; opt.textContent = t;
+        grp.appendChild(opt);
+      });
+      sel.appendChild(grp);
+    } else if (isWednesday) {
+      const grp = document.createElement('optgroup');
+      grp.label = 'Wednesday Times';
+      ['5:00pm - 6:00pm','6:00pm - 7:00pm'].forEach(t => {
         const opt = document.createElement('option');
         opt.value = t; opt.textContent = t;
         grp.appendChild(opt);
@@ -1441,6 +1523,24 @@
       alert('Something went wrong. Please try again or email me directly.');
     });
   }
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileDrawer.classList.toggle('open');
+    document.body.style.overflow = mobileDrawer.classList.contains('open') ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileDrawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 </script>
 
 </body>
