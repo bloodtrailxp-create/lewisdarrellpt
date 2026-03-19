@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You! | Lewis Darrell PT</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --off-black: #141414;
+    --dark-gray: #1e1e1e;
+    --text: #e8e4df;
+    --text-muted: #8a8580;
+    --accent: #e63b2e;
+    --accent-glow: #ff4d3a;
+    --gold: #d4a853;
+    --green: #2ecc71;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--black);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .container {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+  }
+  .logo {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 3rem;
+    color: var(--text-muted);
+  }
+  .logo span { color: var(--accent); }
+  .checkmark {
+    width: 80px;
+    height: 80px;
+    background: rgba(46,204,113,0.1);
+    border: 3px solid var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2.5rem;
+    animation: popIn 0.5s ease-out;
+  }
+  @keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  h1 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .download-card {
+    background: var(--dark-gray);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .download-card h3 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .download-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.9rem 2.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .download-btn:hover {
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(230,59,46,0.3);
+  }
+  .download-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  .info {
+    background: rgba(212,168,83,0.08);
+    border: 1px solid rgba(212,168,83,0.2);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  .info p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+  .info p:last-child { margin-bottom: 0; }
+  .info strong { color: var(--gold); }
+  .back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+  }
+  .back-link:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">Lewis<span> Darrell PT</span></div>
+  
+  <div class="checkmark">✓</div>
+  
+  <h1>THANK YOU!</h1>
+  <p class="subtitle">Your payment was successful. Your training program is ready to download below.</p>
+
+  <div class="download-card">
+    <h3>Advanced Fight Prep Program</h3>
+    <p>12-Week Training Plan • PDF Download</p>
+    <!-- 
+      IMPORTANT: Replace the href below with the actual path to your PDF file.
+      Upload your PDF to the same folder as this page, or use a file hosting link.
+      See instructions below.
+    -->
+    <a href="advanced-fight-prep-program.pdf" class="download-btn" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      Download PDF
+    </a>
+  </div>
+
+  <div class="info">
+    <p><strong>Save your link!</strong> Bookmark this page so you can come back and download your program again anytime.</p>
+    <p>Having trouble? Email me at <strong>your@email.com</strong> and I'll sort it out.</p>
+  </div>
+
+  <a href="index.html" class="back-link">← Back to lewisdarrellpt.com</a>
+</div>
+
+</body>
+</html>

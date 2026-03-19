@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Progress | Lewis Darrell PT</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --card: #1e1e1e;
+    --accent: #e63b2e;
+    --accent-glow: #ff4d3a;
+    --gold: #d4a853;
+    --text: #e8e4df;
+    --text-muted: #8a8580;
+    --border: rgba(255,255,255,0.06);
+    --input-bg: #2a2a2a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+
+  /* Login */
+  .login-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+  }
+  .login-box {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .brand {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1, h2, h3 { font-family: 'Bebas Neue', Impact, sans-serif; letter-spacing: 1px; }
+  .login-box h2 { font-size: 1.6rem; margin-bottom: 8px; }
+  .login-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  input:focus, textarea:focus { border-color: var(--accent); }
+  .pin-input { font-size: 1.2rem; text-align: center; letter-spacing: 8px; margin-bottom: 1rem; }
+
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+  }
+  .btn:hover { background: var(--accent-glow); transform: translateY(-2px); }
+  .btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    width: auto;
+  }
+  .btn-outline {
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-outline:hover { border-color: rgba(230,59,46,0.3); background: var(--input-bg); transform: none; }
+  .btn-gold { background: none; border: 1px solid rgba(212,168,83,0.3); color: var(--gold); }
+  .btn-gold:hover { background: rgba(212,168,83,0.1); transform: none; }
+  .btn-danger { background: rgba(230,59,46,0.1); border: 1px solid rgba(230,59,46,0.2); color: var(--accent); }
+  .btn-danger:hover { background: rgba(230,59,46,0.2); transform: none; }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 { font-size: 1.8rem; }
+  .client-count {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: var(--card);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+  }
+
+  /* Add client row */
+  .add-row { display: flex; gap: 0.75rem; margin-bottom: 2rem; }
+  .add-row input { flex: 1; }
+  .add-row .btn { width: auto; white-space: nowrap; }
+
+  /* Client list */
+  .client-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .client-card:hover { border-color: rgba(230,59,46,0.3); }
+  .client-name { font-size: 1.1rem; font-weight: 700; }
+  .client-meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+  .client-actions { display: flex; gap: 8px; align-items: center; }
+
+  /* Empty state */
+  .empty { text-align: center; padding: 3rem; color: var(--text-muted); }
+  .empty .icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+  /* Entry card */
+  .entry-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+  }
+  .entry-card.editing { border-color: var(--accent); }
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .entry-date {
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+    color: var(--gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+  }
+  .entry-actions { display: flex; gap: 6px; }
+
+  /* Edit form grid */
+  .edit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+  .edit-grid .full-width { grid-column: 1 / -1; }
+  .field-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .edit-grid input, .edit-grid textarea {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.9rem;
+  }
+  textarea { min-height: 60px; resize: vertical; }
+
+  /* Stats display */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .stat-item span { color: var(--text-muted); }
+  .stat-item strong { color: var(--text); }
+  .coach-note {
+    margin-top: 10px;
+    padding: 0.65rem 0.75rem;
+    background: var(--input-bg);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Public view stats */
+  .public-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .public-stat {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .public-stat .value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .public-stat .unit {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .public-stat .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  .back-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 4px;
+    font-family: inherit;
+  }
+  .back-btn:hover { color: var(--text); }
+
+  /* Nav link */
+  .home-link {
+    display: inline-block;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+  }
+  .home-link:hover { color: var(--accent); }
+
+  @media (max-width: 500px) {
+    .add-row { flex-direction: column; }
+    .header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .entry-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .edit-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="app"></div>
+
+<script>
+const app = document.getElementById('app');
+const STORAGE_KEY = 'ldpt_clients';
+const PIN_KEY = 'ldpt_pin';
+
+// ===== DATA =====
+function getClients() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } 
+  catch { return []; }
+}
+function saveClients(clients) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(clients));
+}
+function getPin() { return localStorage.getItem(PIN_KEY) || ''; }
+function setPin(pin) { localStorage.setItem(PIN_KEY, pin); }
+function genId() { return Math.random().toString(36).substr(2, 9); }
+
+let state = {
+  view: 'login', // login, dashboard, client, public
+  authenticated: false,
+  clients: getClients(),
+  selectedClientId: null,
+  editingEntryId: null,
+};
+
+// Check if URL has a client hash for public view
+function checkPublicView() {
+  const hash = window.location.hash;
+  if (hash.startsWith('#client-')) {
+    const clientId = hash.replace('#client-', '');
+    state.view = 'public';
+    state.selectedClientId = clientId;
+    return true;
+  }
+  return false;
+}
+
+// ===== RENDER =====
+function render() {
+  if (state.view === 'public') return renderPublic();
+  if (!state.authenticated) return renderLogin();
+  if (state.view === 'client') return renderClient();
+  return renderDashboard();
+}
+
+// ===== LOGIN =====
+function renderLogin() {
+  const hasPin = !!getPin();
+  app.innerHTML = `
+    <div class="login-wrap">
+      <div class="login-box">
+        <div class="brand">Lewis Darrell PT</div>
+        <h2>${hasPin ? 'Coach Dashboard' : 'Set Up Dashboard'}</h2>
+        <p>${hasPin ? 'Enter your PIN to access' : 'Create a 4-digit PIN to protect your dashboard'}</p>
+        <input type="password" class="pin-input" maxlength="4" placeholder="• • • •" id="pinInput">
+        <button class="btn" onclick="handleLogin()">${hasPin ? 'Unlock' : 'Set PIN & Enter'}</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('pinInput').focus();
+  document.getElementById('pinInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleLogin();
+  });
+}
+
+function handleLogin() {
+  const val = document.getElementById('pinInput').value;
+  const hasPin = !!getPin();
+  if (!hasPin) {
+    if (val.length === 4) {
+      setPin(val);
+      state.authenticated = true;
+      state.view = 'dashboard';
+      render();
+    } else {
+      alert('PIN must be 4 digits');
+    }
+  } else if (val === getPin()) {
+    state.authenticated = true;
+    state.view = 'dashboard';
+    render();
+  } else {
+    alert('Wrong PIN');
+  }
+}
+
+// ===== DASHBOARD =====
+function renderDashboard() {
+  const clients = state.clients;
+  app.innerHTML = `
+    <div class="header">
+      <div>
+        <div class="brand">Lewis Darrell PT</div>
+        <h1>Client Progress</h1>
+      </div>
+      <div class="client-count">${clients.length} client${clients.length !== 1 ? 's' : ''}</div>
+    </div>
+
+    <div class="add-row">
+      <input type="text" id="newClientName" placeholder="New client name..." onkeydown="if(event.key==='Enter')addClient()">
+      <button class="btn btn-small" onclick="addClient()">+ Add Client</button>
+    </div>
+
+    ${clients.length === 0 ? `
+      <div class="empty">
+        <div class="icon">🥊</div>
+        <p style="font-size:1.1rem;margin-bottom:6px">No clients yet</p>
+        <p style="font-size:0.85rem">Add your first client above to start tracking progress</p>
+      </div>
+    ` : clients.map(c => `
+      <div class="client-card" onclick="openClient('${c.id}')">
+        <div>
+          <div class="client-name">${c.name}</div>
+          <div class="client-meta">${c.entries.length} entr${c.entries.length !== 1 ? 'ies' : 'y'} · Added ${new Date(c.createdAt).toLocaleDateString()}</div>
+        </div>
+        <div class="client-actions">
+          <button class="btn btn-small btn-danger" onclick="event.stopPropagation();deleteClient('${c.id}')">Delete</button>
+          <span style="color:var(--text-muted);font-size:1.2rem">→</span>
+        </div>
+      </div>
+    `).join('')}
+
+    <a href="index.html" class="home-link">← Back to website</a>
+  `;
+}
+
+function addClient() {
+  const input = document.getElementById('newClientName');
+  const name = input.value.trim();
+  if (!name) return;
+  state.clients.push({
+    id: genId(),
+    name: name,
+    entries: [],
+    createdAt: new Date().toISOString()
+  });
+  saveClients(state.clients);
+  render();
+}
+
+function deleteClient(id) {
+  if (!confirm('Delete this client and all their data?')) return;
+  state.clients = state.clients.filter(c => c.id !== id);
+  saveClients(state.clients);
+  if (state.selectedClientId === id) {
+    state.selectedClientId = null;
+    state.view = 'dashboard';
+  }
+  render();
+}
+
+function openClient(id) {
+  state.selectedClientId = id;
+  state.view = 'client';
+  state.editingEntryId = null;
+  render();
+}
+
+// ===== CLIENT VIEW =====
+function renderClient() {
+  const client = state.clients.find(c => c.id === state.selectedClientId);
+  if (!client) { state.view = 'dashboard'; render(); return; }
+
+  const entries = [...client.entries].reverse();
+
+  app.innerHTML = `
+    <div class="header">
+      <div>
+        <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+        <h2 style="font-size:1.5rem">${client.name}</h2>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-small btn-gold" onclick="copyClientLink('${client.id}','${client.name}')">📋 Copy Client Link</button>
+        <button class="btn btn-small" onclick="addEntry()">+ Add Entry</button>
+      </div>
+    </div>
+
+    ${entries.length === 0 ? `
+      <div class="empty">
+        <p style="font-size:1.1rem;margin-bottom:6px">No entries yet</p>
+        <p style="font-size:0.85rem">Click "Add Entry" to log progress for ${client.name}</p>
+      </div>
+    ` : entries.map(e => renderEntry(e)).join('')}
+  `;
+}
+
+function renderEntry(entry) {
+  const isEditing = state.editingEntryId === entry.id;
+  
+  if (isEditing) {
+    return `
+      <div class="entry-card editing">
+        <div class="entry-header">
+          <input type="date" class="entry-date" value="${entry.date}" onchange="updateEntry('${entry.id}','date',this.value)">
+          <div class="entry-actions">
+            <button class="btn btn-small btn-outline" onclick="toggleEdit('')">Done</button>
+            <button class="btn btn-small btn-danger" onclick="deleteEntry('${entry.id}')">Delete</button>
+          </div>
+        </div>
+        <div class="edit-grid">
+          <div><label class="field-label">Weight (kg)</label><input type="number" value="${entry.weight}" onchange="updateEntry('${entry.id}','weight',this.value)"></div>
+          <div><label class="field-label">Waist (cm)</label><input type="number" value="${entry.waist}" onchange="updateEntry('${entry.id}','waist',this.value)"></div>
+          <div><label class="field-label">Chest (cm)</label><input type="number" value="${entry.chest}" onchange="updateEntry('${entry.id}','chest',this.value)"></div>
+          <div><label class="field-label">Arms (cm)</label><input type="number" value="${entry.arms}" onchange="updateEntry('${entry.id}','arms',this.value)"></div>
+          <div><label class="field-label">Jabs in 30s</label><input type="number" value="${entry.jabsIn30s}" onchange="updateEntry('${entry.id}','jabsIn30s',this.value)"></div>
+          <div><label class="field-label">Plank (secs)</label><input type="number" value="${entry.plankHold}" onchange="updateEntry('${entry.id}','plankHold',this.value)"></div>
+          <div><label class="field-label">Rounds Done</label><input type="number" value="${entry.roundsCompleted}" onchange="updateEntry('${entry.id}','roundsCompleted',this.value)"></div>
+          <div><label class="field-label">Sessions Total</label><input type="number" value="${entry.sessionsAttended}" onchange="updateEntry('${entry.id}','sessionsAttended',this.value)"></div>
+          <div><label class="field-label">Week Streak</label><input type="number" value="${entry.streak}" onchange="updateEntry('${entry.id}','streak',this.value)"></div>
+          <div class="full-width"><label class="field-label">Coach Notes</label><textarea placeholder="Great session, improved footwork..." onchange="updateEntry('${entry.id}','notes',this.value)">${entry.notes}</textarea></div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Display view
+  let statsHtml = '';
+  if (entry.weight) statsHtml += `<div class="stat-item"><span>Weight: </span><strong>${entry.weight}kg</strong></div>`;
+  if (entry.waist) statsHtml += `<div class="stat-item"><span>Waist: </span><strong>${entry.waist}cm</strong></div>`;
+  if (entry.chest) statsHtml += `<div class="stat-item"><span>Chest: </span><strong>${entry.chest}cm</strong></div>`;
+  if (entry.arms) statsHtml += `<div class="stat-item"><span>Arms: </span><strong>${entry.arms}cm</strong></div>`;
+  if (entry.jabsIn30s) statsHtml += `<div class="stat-item"><span>Jabs/30s: </span><strong>${entry.jabsIn30s}</strong></div>`;
+  if (entry.plankHold) statsHtml += `<div class="stat-item"><span>Plank: </span><strong>${entry.plankHold}s</strong></div>`;
+  if (entry.roundsCompleted) statsHtml += `<div class="stat-item"><span>Rounds: </span><strong>${entry.roundsCompleted}</strong></div>`;
+  if (entry.sessionsAttended > 0) statsHtml += `<div class="stat-item"><span>Sessions: </span><strong>${entry.sessionsAttended}</strong></div>`;
+  if (entry.streak > 0) statsHtml += `<div class="stat-item"><span>Streak: </span><strong>${entry.streak} weeks</strong></div>`;
+
+  return `
+    <div class="entry-card">
+      <div class="entry-header">
+        <span style="color:var(--gold);font-weight:600;font-size:0.85rem">${entry.date}</span>
+        <div class="entry-actions">
+          <button class="btn btn-small btn-outline" onclick="toggleEdit('${entry.id}')">Edit</button>
+          <button class="btn btn-small btn-danger" onclick="deleteEntry('${entry.id}')">Delete</button>
+        </div>
+      </div>
+      <div class="stats-grid">${statsHtml}</div>
+      ${entry.notes ? `<div class="coach-note">Coach notes: ${entry.notes}</div>` : ''}
+    </div>
+  `;
+}
+
+function addEntry() {
+  const client = state.clients.find(c => c.id === state.selectedClientId);
+  if (!client) return;
+  const entry = {
+    id: genId(),
+    weight: '', waist: '', chest: '', arms: '',
+    jabsIn30s: '', plankHold: '', roundsCompleted: '',
+    sessionsAttended: 0, streak: 0, notes: '',
+    date: new Date().toISOString().split('T')[0]
+  };
+  client.entries.push(entry);
+  saveClients(state.clients);
+  state.editingEntryId = entry.id;
+  render();
+}
+
+function updateEntry(entryId, field, value) {
+  const client = state.clients.find(c => c.id === state.selectedClientId);
+  if (!client) return;
+  const entry = client.entries.find(e => e.id === entryId);
+  if (!entry) return;
+  entry[field] = value;
+  saveClients(state.clients);
+}
+
+function deleteEntry(entryId) {
+  if (!confirm('Delete this entry?')) return;
+  const client = state.clients.find(c => c.id === state.selectedClientId);
+  if (!client) return;
+  client.entries = client.entries.filter(e => e.id !== entryId);
+  saveClients(state.clients);
+  render();
+}
+
+function toggleEdit(entryId) {
+  state.editingEntryId = state.editingEntryId === entryId ? null : entryId;
+  render();
+}
+
+function goBack() {
+  state.view = 'dashboard';
+  state.selectedClientId = null;
+  state.editingEntryId = null;
+  render();
+}
+
+function copyClientLink(clientId, clientName) {
+  const link = window.location.origin + window.location.pathname + '#client-' + clientId;
+  navigator.clipboard.writeText(link).then(() => {
+    alert('Link copied! Send this to ' + clientName + ':\n\n' + link);
+  }).catch(() => {
+    prompt('Copy this link and send it to ' + clientName + ':', link);
+  });
+}
+
+// ===== PUBLIC VIEW =====
+function renderPublic() {
+  const client = state.clients.find(c => c.id === state.selectedClientId);
+  
+  if (!client) {
+    app.innerHTML = `
+      <div style="text-align:center;padding:4rem 2rem">
+        <div class="brand">Lewis Darrell PT</div>
+        <h1 style="font-size:2rem;margin:1rem 0">Client Not Found</h1>
+        <p style="color:var(--text-muted)">This progress link doesn't exist or has been removed.</p>
+        <a href="index.html" class="home-link">← Back to website</a>
+      </div>
+    `;
+    return;
+  }
+
+  const entries = [...client.entries].reverse();
+  const latest = client.entries.length > 0 ? client.entries[client.entries.length - 1] : null;
+
+  let statsHtml = '';
+  if (latest) {
+    const stats = [
+      { label: 'Weight', value: latest.weight, unit: 'kg' },
+      { label: 'Jabs in 30s', value: latest.jabsIn30s, unit: '' },
+      { label: 'Plank Hold', value: latest.plankHold, unit: 'secs' },
+      { label: 'Rounds', value: latest.roundsCompleted, unit: '' },
+      { label: 'Sessions', value: latest.sessionsAttended, unit: '' },
+      { label: 'Streak', value: latest.streak, unit: 'weeks' },
+    ];
+    statsHtml = '<div class="public-stats">' + stats.filter(s => s.value).map(s => `
+      <div class="public-stat">
+        <div class="value">${s.value}${s.unit ? `<span class="unit">${s.unit}</span>` : ''}</div>
+        <div class="label">${s.label}</div>
+      </div>
+    `).join('') + '</div>';
+  }
+
+  let historyHtml = entries.map(e => {
+    let items = '';
+    if (e.weight) items += `<div><span style="color:var(--text-muted)">Weight: </span>${e.weight}kg</div>`;
+    if (e.waist) items += `<div><span style="color:var(--text-muted)">Waist: </span>${e.waist}cm</div>`;
+    if (e.chest) items += `<div><span style="color:var(--text-muted)">Chest: </span>${e.chest}cm</div>`;
+    if (e.arms) items += `<div><span style="color:var(--text-muted)">Arms: </span>${e.arms}cm</div>`;
+    if (e.jabsIn30s) items += `<div><span style="color:var(--text-muted)">Jabs/30s: </span>${e.jabsIn30s}</div>`;
+    if (e.plankHold) items += `<div><span style="color:var(--text-muted)">Plank: </span>${e.plankHold}s</div>`;
+    if (e.roundsCompleted) items += `<div><span style="color:var(--text-muted)">Rounds: </span>${e.roundsCompleted}</div>`;
+    return `
+      <div class="entry-card">
+        <div style="color:var(--gold);font-weight:600;font-size:0.85rem;margin-bottom:10px">${e.date}</div>
+        <div class="stats-grid">${items}</div>
+        ${e.notes ? `<div class="coach-note">Coach notes: ${e.notes}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  app.innerHTML = `
+    <div style="text-align:center;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)">
+      <div class="brand">Lewis Darrell PT</div>
+      <h1 style="font-size:2rem">${client.name}'s Progress</h1>
+    </div>
+    ${statsHtml}
+    ${entries.length === 0 ? `
+      <p style="text-align:center;color:var(--text-muted)">No progress entries yet. Your coach will add updates here.</p>
+    ` : `
+      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:1px">Progress History</h3>
+      ${historyHtml}
+    `}
+    <a href="index.html" class="home-link">← Back to website</a>
+  `;
+}
+
+// ===== INIT =====
+if (!checkPublicView()) {
+  state.view = 'login';
+}
+render();
+
+// Listen for hash changes (client links)
+window.addEventListener('hashchange', function() {
+  if (checkPublicView()) {
+    state.clients = getClients();
+    render();
+  }
+});
+</script>
+
+</body>
+</html>

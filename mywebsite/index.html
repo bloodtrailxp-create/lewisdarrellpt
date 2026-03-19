@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boxing Training Programs | Lewis Darrell PT</title>
+<meta name="description" content="Professional boxing training plans by Lewis Darrell PT. Downloadable PDF programs for beginners, kids & teens, and advanced fighters. Plus 1-to-1 and online PT sessions.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --black: #080e0a;
+    --off-black: #0e1710;
+    --dark-gray: #152018;
+    --mid-gray: #1e2e22;
+    --text: #e2ece5;
+    --text-muted: #7a9982;
+    --accent: #1db85a;
+    --accent-glow: #25d96a;
+    --gold: #2ecc71;
+    --gold-dim: #1aad5a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--black);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ---- HAMBURGER ---- */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ---- MOBILE DRAWER ---- */
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,10,0.97);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2rem;
+  }
+  .mobile-drawer.open { display: flex; }
+  .mobile-drawer a {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .mobile-drawer a:hover { color: var(--accent); }
+  .mobile-drawer .drawer-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.9rem 2.5rem;
+    border-radius: 4px;
+    font-size: 1.8rem;
+  }
+  .mobile-drawer .drawer-cta:hover { background: var(--accent-glow); }
+
+  /* ---- NOISE TEXTURE ---- */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    color: var(--text);
+  }
+  .logo span { color: var(--accent); }
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  nav a:hover { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent-glow); transform: translateY(-1px); }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 50% 30%, rgba(29,184,90,0.1) 0%, transparent 60%);
+    animation: pulse 8s ease-in-out infinite alternate;
+  }
+  @keyframes pulse {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.8s ease-out;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+  .hero h1 .highlight {
+    color: var(--accent);
+    position: relative;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 550px;
+    margin: 0 auto 2.5rem;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+  }
+  .hero-cta:hover {
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(29,184,90,0.35);
+  }
+  .hero-cta svg { width: 18px; height: 18px; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- SECTIONS ---- */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    color: var(--text-muted);
+    max-width: 550px;
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+
+  /* ---- PROGRAMS ---- */
+  #programs { background: var(--off-black); }
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .program-card {
+    background: var(--dark-gray);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .program-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(29,184,90,0.35);
+  }
+  .program-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .program-card:hover::after { opacity: 1; }
+  .program-icon {
+    width: 48px; height: 48px;
+    background: rgba(29,184,90,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+  }
+  .program-card h3 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .program-card .level {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .program-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  .program-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+  }
+  .program-features li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .program-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+  .program-price {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    color: var(--text);
+    letter-spacing: 1px;
+  }
+  .program-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .buy-btn {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.9rem 1.5rem;
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .buy-btn:hover {
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(29,184,90,0.35);
+  }
+  .buy-btn svg {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+
+  /* ---- WHAT YOU GET ---- */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .feature-item {
+    padding: 1.5rem 0;
+  }
+  .feature-number {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 3rem;
+    color: rgba(29,184,90,0.2);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .feature-item h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .feature-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  /* ---- TESTIMONIALS ---- */
+  #testimonials { background: var(--off-black); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .testimonial-card {
+    background: var(--dark-gray);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+  .stars { color: var(--gold); margin-bottom: 1rem; font-size: 0.9rem; letter-spacing: 2px; }
+  .testimonial-card blockquote {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+  }
+  .testimonial-author {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .testimonial-role {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* ---- ABOUT ---- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-image {
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 400px;
+  }
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
+  .about-text h3 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  .stat-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat-number {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 2.2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.25rem;
+  }
+
+  /* ---- CTA SECTION ---- */
+  .cta-section {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: linear-gradient(180deg, var(--black), var(--off-black));
+    position: relative;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(29,184,90,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .cta-section p {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    position: relative;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 1.1rem 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .cta-btn:hover {
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(29,184,90,0.35);
+  }
+
+  /* ---- FAQ ---- */
+  #faq { background: var(--off-black); }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 0;
+    cursor: pointer;
+  }
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .faq-question span {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+  }
+  .faq-item.open .faq-question span { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 400px;
+    padding-top: 1rem;
+  }
+
+  /* ---- BOOKING ---- */
+  #booking { background: var(--black); }
+  .booking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .session-card {
+    background: var(--dark-gray);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .session-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(29,184,90,0.35);
+  }
+  .session-icon {
+    width: 52px; height: 52px;
+    background: rgba(29,184,90,0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    font-size: 1.5rem;
+  }
+  .session-card h3 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.4rem;
+  }
+  .session-card .session-detail {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .session-card .session-price {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 2rem;
+    color: var(--text);
+  }
+  .session-card .session-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .bundle-card {
+    background: linear-gradient(135deg, var(--dark-gray), rgba(29,184,90,0.08));
+    border: 1px solid rgba(29,184,90,0.25);
+    border-radius: 10px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .bundle-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+  }
+  .bundle-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+  }
+  .bundle-card h3 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .bundle-card .bundle-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+  .bundle-pricing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .bundle-pricing .old-price {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+  }
+  .bundle-pricing .new-price {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    color: var(--text);
+  }
+  .bundle-saving {
+    color: var(--gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* ---- ENQUIRY FORM ---- */
+  .enquiry-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--dark-gray);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 2.5rem;
+  }
+  .enquiry-form h3 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  .enquiry-form .form-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--mid-gray);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+  .form-group select {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8580' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  .form-group select option {
+    background: var(--dark-gray);
+    color: var(--text);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+  }
+  .submit-btn:hover {
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(29,184,90,0.35);
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+  .form-success .success-icon {
+    width: 60px; height: 60px;
+    background: rgba(46,204,113,0.1);
+    border: 2px solid #2ecc71;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+  }
+  .form-success h4 {
+    font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .form-success p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 500px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* ---- CALENDAR ---- */
+  .calendar-wrap {
+    background: var(--input-bg, #1a1a1a);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--text);
+  }
+  .cal-nav {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .cal-nav:hover { border-color: var(--accent); color: var(--accent); }
+  .calendar-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+  .cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    color: var(--text);
+    background: none;
+    font-family: inherit;
+  }
+  .cal-day:hover:not(.cal-disabled):not(.cal-empty) {
+    border-color: var(--accent);
+    background: rgba(29,184,90,0.1);
+  }
+  .cal-day.cal-selected {
+    background: var(--accent) !important;
+    color: white !important;
+    font-weight: 700;
+    border-color: var(--accent);
+  }
+  .cal-day.cal-today {
+    border-color: var(--gold);
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .cal-day.cal-disabled {
+    color: rgba(255,255,255,0.15);
+    cursor: not-allowed;
+  }
+  .cal-day.cal-empty { cursor: default; }
+  .cal-selected-display {
+    margin-top: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    background: rgba(29,184,90,0.1);
+    border: 1px solid rgba(29,184,90,0.2);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-align: center;
+    display: none;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-image { min-height: 250px; }
+    .about-image img { max-height: 300px; }
+    .about-text h3 { font-size: 1.8rem; }
+    .stat-row { gap: 1.5rem; flex-wrap: wrap; }
+    .stat-number { font-size: 1.8rem; }
+    section { padding: 3.5rem 1.25rem; }
+    .hero h1 { font-size: clamp(2.5rem, 10vw, 5rem); }
+    .hero p { font-size: 1rem; }
+    .programs-grid { grid-template-columns: 1fr; }
+    .booking-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 2rem; }
+    .bundle-card { padding: 1.5rem; }
+    .bundle-pricing .new-price { font-size: 2rem; }
+    .enquiry-form { padding: 1.5rem; }
+  }
+  @media (max-width: 400px) {
+    .stat-row { gap: 1rem; justify-content: center; }
+    .form-row { grid-template-columns: 1fr; }
+    .header { flex-direction: column; align-items: flex-start; }
+    nav { padding: 1rem; }
+    .logo { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Lewis<span> Darrell PT</span></div>
+  <div class="nav-links">
+    <a href="#programs">Programs</a>
+    <a href="#booking">Book a Session</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#programs" class="nav-cta">Get Started</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="#programs" class="drawer-link">Programs</a>
+  <a href="#booking" class="drawer-link">Book a Session</a>
+  <a href="#about" class="drawer-link">About</a>
+  <a href="#faq" class="drawer-link">FAQ</a>
+  <a href="#programs" class="drawer-cta drawer-link">Get Started</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Online Boxing Training Programs</div>
+    <h1>TRAIN LIKE A <span class="highlight">FIGHTER</span></h1>
+    <p>Professional boxing training plans delivered as downloadable PDFs. Built for beginners, young athletes, and serious fighters ready to level up.</p>
+    <a href="#programs" class="hero-cta">
+      View Programs
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="container">
+    <div class="section-label">Programs</div>
+    <div class="section-title">Choose Your Level</div>
+    <p class="section-desc">Each program is a complete PDF training plan with weekly schedules, exercise breakdowns, and progression built in.</p>
+
+    <div class="programs-grid">
+
+      <!-- BEGINNER -->
+      <div class="program-card">
+        <div class="program-icon">🥊</div>
+        <h3>Beginner Boxing Fitness</h3>
+        <span class="level">All Levels Welcome</span>
+        <p>Perfect if you're brand new to boxing. Build your fitness, learn the fundamentals, and start moving like a fighter.</p>
+        <ul class="program-features">
+          <li>8-week progressive training plan</li>
+          <li>Technique guides with descriptions</li>
+          <li>Warm-up & cool-down routines</li>
+          <li>No equipment needed to start</li>
+          <li>Nutrition tips included</li>
+        </ul>
+        <div class="program-price">£40 <span>/ one-time</span></div>
+        <!-- Beginner payment link -->
+        <a href="https://buy.stripe.com/4gM00j0fD4pr1zK3Zb2wU02" class="buy-btn" target="_blank">Buy Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a>
+      </div>
+
+      <!-- KIDS -->
+      <div class="program-card">
+        <div class="program-icon">⚡</div>
+        <h3>Kids & Teens Boxing</h3>
+        <span class="level">Ages 8–17</span>
+        <p>Fun, structured training designed for young athletes. Builds discipline, coordination, and confidence through boxing.</p>
+        <ul class="program-features">
+          <li>Age-appropriate 6-week plan</li>
+          <li>Focus on technique & footwork</li>
+          <li>Fun challenges & goals</li>
+          <li>Safe training guidelines</li>
+          <li>Parent guidance section</li>
+        </ul>
+        <div class="program-price">£40 <span>/ one-time</span></div>
+        <!-- Kids & Teens payment link -->
+        <a href="https://buy.stripe.com/14A14n1jH8FHceo53f2wU01" class="buy-btn" target="_blank">Buy Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a>
+      </div>
+
+      <!-- ADVANCED -->
+      <div class="program-card">
+        <div class="program-icon">🔥</div>
+        <h3>Advanced Fight Prep</h3>
+        <span class="level">Experienced Boxers</span>
+        <p>For fighters who want to compete or take their skills to the next level. Serious training for serious athletes.</p>
+        <ul class="program-features">
+          <li>12-week periodised plan</li>
+          <li>Sparring preparation drills</li>
+          <li>Strength & conditioning work</li>
+          <li>Recovery & weight management</li>
+          <li>Mental performance tips</li>
+        </ul>
+        <div class="program-price">£100 <span>/ one-time</span></div>
+        <!-- Advanced payment link -->
+        <a href="https://buy.stripe.com/bJe5kD9Qd5tv1zKdzL2wU00" class="buy-btn" target="_blank">Buy Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section>
+  <div class="container">
+    <div class="section-label">What's Included</div>
+    <div class="section-title">More Than Just a Workout Plan</div>
+    <p class="section-desc">Every program is designed by a qualified boxing PT to give you real results, not cookie-cutter workouts.</p>
+
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-number">01</div>
+        <h4>Structured Weekly Plans</h4>
+        <p>Day-by-day training schedules so you always know exactly what to do and when.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-number">02</div>
+        <h4>Exercise Breakdowns</h4>
+        <p>Every exercise explained with clear descriptions so you can train with proper form.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-number">03</div>
+        <h4>Built-In Progression</h4>
+        <p>Plans get harder as you get fitter. No plateaus, just steady improvement week on week.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-number">04</div>
+        <h4>Instant Download</h4>
+        <p>Pay once, download immediately. Print it, save it on your phone — train anywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label">Results</div>
+    <div class="section-title">What Clients Say</div>
+    <p class="section-desc">Real people, real results. Here's what my clients have to say about training with me.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Many coaches will try to play it safe and not show you your full potential in the hopes of keeping you as a customer. PT Lewis Darrell pushed me out of my comfort zone with the right amount of intensity training for progress while balanced with easy training sessions to help me recover enough from injuries and be ready for the next phase of being better than yesterday."</blockquote>
+        <div class="testimonial-author">Nick</div>
+        <div class="testimonial-role">PT Client</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"I really enjoy training with Lewis, he helps me be more disciplined and train my stamina."</blockquote>
+        <div class="testimonial-author">Tim</div>
+        <div class="testimonial-role">PT Client</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Great coach, always there early, always gives his all to every one he coaches. Super passionate about boxing."</blockquote>
+        <div class="testimonial-author">Pete</div>
+        <div class="testimonial-role">PT Client</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="me_coach.jpeg" alt="Lewis Darrell PT coaching boxing">
+      </div>
+      <div class="about-text">
+        <div class="section-label">Your Coach</div>
+        <h3>Lewis Darrell PT</h3>
+        <p>I've been in boxing for over 20 years — started training as a kid and went on to compete as an amateur. Four years ago I turned that love for the sport into coaching, and I haven't looked back. I'm a qualified boxing coach and I bring everything I've learned in the ring to every session.</p>
+        <p>People ask me what I love about boxing. Honestly? Getting hit. Not the aim of the game, but it shows me I'm still there and still in the fight. That mindset is what I bring to my coaching — grit, intensity, and the belief that anyone can surprise themselves if they put in the work.</p>
+        <p>My favourite client to train? Someone completely new. There's nothing better than watching someone go from zero confidence to throwing sharp combinations and feeling unstoppable. Whether you're a total beginner, a kid learning discipline, or a fighter preparing for competition — I'll meet you where you are and push you further than you thought possible.</p>
+        <div class="stat-row">
+          <div>
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Years Coaching</div>
+          </div>
+          <div>
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Clients Trained</div>
+          </div>
+          <div>
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Programs Sold</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <div class="section-label">Book a Session</div>
+    <div class="section-title">Train With Me</div>
+    <p class="section-desc">Whether it's in person, online, or for your kids — book a 1-hour session and let's get to work.</p>
+
+    <div class="booking-grid">
+      <div class="session-card">
+        <div class="session-icon">🥊</div>
+        <h3>1-to-1 PT Session</h3>
+        <p class="session-detail">In person • 1 hour • All levels</p>
+        <div class="session-price">£35 <span>/ session</span></div>
+      </div>
+      <div class="session-card">
+        <div class="session-icon">💻</div>
+        <h3>Online / Video Call</h3>
+        <p class="session-detail">Train from home • 1 hour • All levels</p>
+        <div class="session-price">£30 <span>/ session</span></div>
+      </div>
+      <div class="session-card">
+        <div class="session-icon">⚡</div>
+        <h3>Kids Session</h3>
+        <p class="session-detail">Ages 8-17 • 1 hour • Fun &amp; structured</p>
+        <div class="session-price">£25 <span>/ session</span></div>
+      </div>
+    </div>
+
+    <div class="bundle-card">
+      <div class="bundle-badge">Best Value</div>
+      <h3>10 Session Bundle</h3>
+      <p class="bundle-desc">Commit to your training and save £100. Buy 10 sessions upfront at a discounted rate — any session type.</p>
+      <div class="bundle-pricing">
+        <span class="old-price">£350</span>
+        <span class="new-price">£250</span>
+      </div>
+      <p class="bundle-saving">You save £100!</p>
+    </div>
+
+    <div class="enquiry-form" id="bookingForm">
+      <h3>Book Your Session</h3>
+      <p class="form-subtitle">Fill in the form below and I'll get back to you within 24 hours to confirm your booking.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="firstName" placeholder="Your first name" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="lastName" placeholder="Your last name" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="phone" placeholder="07xxx xxx xxx">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Session Type</label>
+        <select id="sessionType">
+          <option value="">Choose a session...</option>
+          <option value="1-to-1 PT Session (£35)">1-to-1 PT Session — £35</option>
+          <option value="Online / Video Call (£30)">Online / Video Call — £30</option>
+          <option value="Kids Session (£25)">Kids Session — £25</option>
+          <option value="10 Session Bundle (£250 - SAVE £100)">⭐ 10 Session Bundle — £250 (save £100)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Preferred Date</label>
+        <div class="calendar-wrap" id="calendarWrap">
+          <div class="calendar-header">
+            <button type="button" class="cal-nav" onclick="changeMonth(-1)">‹</button>
+            <span id="calMonthYear"></span>
+            <button type="button" class="cal-nav" onclick="changeMonth(1)">›</button>
+          </div>
+          <div class="calendar-days-header">
+            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+          <input type="hidden" id="selectedDate" value="">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Preferred Time</label>
+        <select id="preferredTime">
+          <option value="">Choose a time...</option>
+          <optgroup label="Weekday Evenings (Mon, Tue, Thu, Fri)">
+            <option value="6:00pm - 7:00pm">6:00pm - 7:00pm</option>
+            <option value="7:00pm - 8:00pm">7:00pm - 8:00pm</option>
+            <option value="8:00pm - 9:00pm">8:00pm - 9:00pm</option>
+          </optgroup>
+          <optgroup label="Wednesday Only">
+            <option value="5:00pm - 6:00pm">5:00pm - 6:00pm</option>
+            <option value="6:00pm - 7:00pm">6:00pm - 7:00pm</option>
+          </optgroup>
+          <optgroup label="Weekends (Sat-Sun)">
+            <option value="10:30am - 11:30am">10:30am - 11:30am</option>
+            <option value="11:30am - 12:30pm">11:30am - 12:30pm</option>
+            <option value="12:30pm - 1:30pm">12:30pm - 1:30pm</option>
+            <option value="1:30pm - 2:30pm">1:30pm - 2:30pm</option>
+            <option value="2:30pm - 3:30pm">2:30pm - 3:30pm</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Anything else I should know?</label>
+        <textarea id="message" placeholder="Experience level, goals, injuries, questions..."></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="submitBooking()">Send Booking Enquiry</button>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">✓</div>
+      <h4>Enquiry Sent!</h4>
+      <p>Thanks! I'll get back to you within 24 hours to confirm your session. Keep an eye on your email.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">Common Questions</div>
+
+    <div class="faq-list" style="max-width:700px;">
+      <div class="faq-item">
+        <div class="faq-question">What do I get when I purchase? <span>+</span></div>
+        <div class="faq-answer">You'll receive an instant PDF download containing your full training program. This includes weekly schedules, exercise breakdowns, warm-ups, cool-downs, and progression guidance.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need equipment? <span>+</span></div>
+        <div class="faq-answer">The Beginner program needs minimal equipment — just some space. The Advanced program recommends access to a heavy bag and basic gym equipment. Equipment alternatives are provided where possible.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Which program is right for me? <span>+</span></div>
+        <div class="faq-answer">If you're new to boxing or fitness, start with Beginner Boxing Fitness. If you have boxing experience and want to compete or push yourself further, go for Advanced Fight Prep. Kids & Teens is designed for ages 8–17.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I message you with questions? <span>+</span></div>
+        <div class="faq-answer">Absolutely. Every purchase includes the ability to message me directly on Instagram or email if you need guidance on any part of the plan.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is there a refund policy? <span>+</span></div>
+        <div class="faq-answer">Due to the digital nature of the product, refunds are handled on a case-by-case basis. If you're unsatisfied, get in touch and we'll sort it out.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I book a session? <span>+</span></div>
+        <div class="faq-answer">Just fill in the booking form on this page and I'll get back to you within 24 hours to confirm your session. Pick your session type, preferred day, and time slot — I'll do the rest.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Where are sessions held? <span>+</span></div>
+        <div class="faq-answer">Sessions can be held at a local gym or I can come to you — whatever works best. Online sessions are also available via video call if you'd prefer to train from home. We'll sort out the location when you book.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need boxing experience? <span>+</span></div>
+        <div class="faq-answer">Not at all. I work with complete beginners right through to experienced fighters. Every session is tailored to your level, so whether it's your first time throwing a punch or you're prepping for a fight, I've got you covered.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What age groups do you coach? <span>+</span></div>
+        <div class="faq-answer">I coach all ages — adults of any fitness level, and kids and teens from age 8 upwards. Kids sessions are structured to be fun, safe, and age-appropriate while still building real boxing skills.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I cancel or reschedule? <span>+</span></div>
+        <div class="faq-answer">Yes — just give me at least 24 hours notice and we can move your session to another day or time. Cancellations with less than 24 hours notice may be charged in full.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What should I bring to a session? <span>+</span></div>
+        <div class="faq-answer">Wear comfortable gym clothes and trainers, and bring a water bottle. If you have your own gloves and hand wraps, bring those too — but don't worry if you don't, I can provide equipment for your first few sessions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>READY TO START<br>TRAINING?</h2>
+  <p>Choose your program, download it instantly, and start your boxing journey today.</p>
+  <a href="#programs" class="cta-btn">
+    View Programs
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:0.5rem;">© 2026 Lewis Darrell PT. All rights reserved.</p>
+    <p><a href="/cdn-cgi/l/email-protection#acd5c3d9deecc9c1cdc5c082cfc3c1"><span class="__cf_email__" data-cfemail="5920362c2b193c34383035773a3634">[email&#160;protected]</span></a> · <a href="#">Instagram</a></p>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // FAQ toggle
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+
+  // Booking form submission via Formspree
+  // SET UP INSTRUCTIONS:
+  // 1. Go to https://formspree.io and sign up (free)
+  // 2. Create a new form — you'll get an ID like "xpzvqkdl"
+  // 3. Replace YOUR_FORMSPREE_ID below with your actual ID
+  
+  // ===== CALENDAR =====
+  let calDate = new Date();
+  let calSelected = null;
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function renderCalendar() {
+    const year = calDate.getFullYear();
+    const month = calDate.getMonth();
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    document.getElementById('calMonthYear').textContent = months[month] + ' ' + year;
+
+    const firstDay = new Date(year, month, 1);
+    let startDay = firstDay.getDay() - 1;
+    if (startDay < 0) startDay = 6;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    let html = '';
+    for (let i = 0; i < startDay; i++) {
+      html += '<div class="cal-day cal-empty"></div>';
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(year, month, d);
+      const isPast = date < today;
+      const isToday = date.getTime() === today.getTime();
+      const isSelected = calSelected && date.getTime() === calSelected.getTime();
+
+      let cls = 'cal-day';
+      if (isPast) cls += ' cal-disabled';
+      if (isToday) cls += ' cal-today';
+      if (isSelected) cls += ' cal-selected';
+
+      if (isPast) {
+        html += `<div class="${cls}">${d}</div>`;
+      } else {
+        html += `<button type="button" class="${cls}" onclick="selectDate(${year},${month},${d})">${d}</button>`;
+      }
+    }
+    document.getElementById('calendarGrid').innerHTML = html;
+
+    // Update time options based on selected day
+    if (calSelected) {
+      const dayOfWeek = calSelected.getDay();
+      updateTimeOptions(dayOfWeek);
+    }
+  }
+
+  function selectDate(y, m, d) {
+    calSelected = new Date(y, m, d);
+    const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const formatted = dayNames[calSelected.getDay()] + ' ' + d + ' ' + months[m] + ' ' + y;
+    document.getElementById('selectedDate').value = formatted;
+
+    // Show selected date display
+    let display = document.getElementById('calSelectedDisplay');
+    if (!display) {
+      display = document.createElement('div');
+      display.id = 'calSelectedDisplay';
+      display.className = 'cal-selected-display';
+      document.getElementById('calendarWrap').appendChild(display);
+    }
+    display.textContent = formatted;
+    display.style.display = 'block';
+
+    renderCalendar();
+  }
+
+  function updateTimeOptions(dayOfWeek) {
+    const sel = document.getElementById('preferredTime');
+    sel.innerHTML = '<option value="">Choose a time...</option>';
+
+    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+    const isWednesday = dayOfWeek === 3;
+
+    if (isWeekend) {
+      const grp = document.createElement('optgroup');
+      grp.label = 'Weekend Times';
+      ['10:30am - 11:30am','11:30am - 12:30pm','12:30pm - 1:30pm','1:30pm - 2:30pm','2:30pm - 3:30pm'].forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t; opt.textContent = t;
+        grp.appendChild(opt);
+      });
+      sel.appendChild(grp);
+    } else if (isWednesday) {
+      const grp = document.createElement('optgroup');
+      grp.label = 'Wednesday Times';
+      ['5:00pm - 6:00pm','6:00pm - 7:00pm'].forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t; opt.textContent = t;
+        grp.appendChild(opt);
+      });
+      sel.appendChild(grp);
+    } else {
+      const grp = document.createElement('optgroup');
+      grp.label = 'Weekday Evening';
+      ['6:00pm - 7:00pm','7:00pm - 8:00pm','8:00pm - 9:00pm'].forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t; opt.textContent = t;
+        grp.appendChild(opt);
+      });
+      sel.appendChild(grp);
+    }
+  }
+
+  function changeMonth(dir) {
+    calDate.setMonth(calDate.getMonth() + dir);
+    renderCalendar();
+  }
+
+  // Init calendar
+  renderCalendar();
+
+  // ===== BOOKING SUBMIT =====
+  function submitBooking() {
+    const data = {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      sessionType: document.getElementById('sessionType').value,
+      preferredDate: document.getElementById('selectedDate').value,
+      preferredTime: document.getElementById('preferredTime').value,
+      message: document.getElementById('message').value
+    };
+
+    if (!data.firstName || !data.email || !data.sessionType) {
+      alert('Please fill in your name, email, and choose a session type.');
+      return;
+    }
+
+    if (!data.preferredDate) {
+      alert('Please select a date from the calendar.');
+      return;
+    }
+
+    fetch('https://formspree.io/f/meelaqqj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: data.firstName + ' ' + data.lastName,
+        email: data.email,
+        phone: data.phone,
+        session: data.sessionType,
+        date: data.preferredDate,
+        time: data.preferredTime,
+        message: data.message
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById('bookingForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again or email me directly.');
+      }
+    })
+    .catch(() => {
+      alert('Something went wrong. Please try again or email me directly.');
+    });
+  }
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileDrawer.classList.toggle('open');
+    document.body.style.overflow = mobileDrawer.classList.contains('open') ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileDrawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+</body>
+</html>
